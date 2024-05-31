@@ -72,5 +72,20 @@ void agregarProducto(char nombresproduc[][3][30], double precio[], int *n){
     printf("Ingrese el precio del nuevo producto: ");
     scanf("%lf", &precio[*n]);
     (*n)++;
+}
 
+void eliminarProducto(char nombresproduc[][3][30], double precio[], int *n, char nombreABuscar[]) {
+    int index = buscarProductoXNombre(nombresproduc, nombreABuscar, *n);
+    if (index != -1) {
+        for (int i = index; i < *n - 1; i++) {
+            strcpy(nombresproduc[i][0], nombresproduc[i + 1][0]);
+            strcpy(nombresproduc[i][1], nombresproduc[i + 1][1]);
+            strcpy(nombresproduc[i][2], nombresproduc[i + 1][2]);
+            precio[i] = precio[i + 1];
+        }
+        (*n)--;
+        printf("Producto %s ha sido eliminado con exito.\n", nombreABuscar);
+    } else {
+        printf("No existe el producto %s en el inventario.\n", nombreABuscar);
+    }
 }

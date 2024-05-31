@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
     int opcion1, opcion2;
 
     do {
-        printf("Seleccione una opcion:\n1. Ingresar Productos\n2. Imprimir Inventario\n3. Buscar Productos\n4. Editar Productos\n5. Agregar Producto\n>>");
+        printf("Seleccione una opcion:\n1. Ingresar Productos\n2. Imprimir Inventario\n3. Buscar Productos\n4. Editar Productos\n5. Agregar Producto\n6. Eliminar Producto\n>>");
         scanf("%d", &opcion1);
         switch (opcion1) {
             case 1:
@@ -38,6 +38,12 @@ int main(int argc, char *argv[]) {
                 break;
             case 5:
                 agregarProducto(nombresproduc,precio,&n);
+                break;
+            case 6:
+                printf("Ingrese el nombre del producto que desea eliminar: ");
+                while (getchar() != '\n'); 
+                scanf("%s", nombreAbuscar);
+                eliminarProducto(nombresproduc, precio, &n, nombreAbuscar);
                 break;
             default:
                 printf("Opción no válida. Intente de nuevo.\n");
